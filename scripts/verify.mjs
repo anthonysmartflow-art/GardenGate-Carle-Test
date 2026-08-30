@@ -5,6 +5,7 @@ import { resolve } from 'node:path'
 const root = resolve(import.meta.dirname, '..')
 const app = readFileSync(resolve(root, 'src/App.jsx'), 'utf8')
 const styles = readFileSync(resolve(root, 'src/styles.css'), 'utf8')
+const html = readFileSync(resolve(root, 'index.html'), 'utf8')
 
 const requiredRoutes = [
   '/',
@@ -38,8 +39,11 @@ for (const color of ['#539edf', '#1470af', '#ffffff', '#000000', '#eaeaee']) {
   assert(styles.toLowerCase().includes(color), `Missing locked palette color: ${color}`)
 }
 
-for (const forbidden of ['#f15a24', '#9d3152', '#49634d', '#f7f7f2']) {
-  assert(!styles.toLowerCase().includes(forbidden), `Forbidden V1/reference color found: ${forbidden}`)
+assert(html.includes('name="theme-color" content="#539EDF"'), 'HTML theme color must use Garden Gate blue')
+assert(!html.includes('rel="icon"'), 'No logo-like favicon should be invented for this prototype')
+
+for (const forbidden of ['#f15a24', '#9d3152', '#49634d', '#f7f7f2', '#17231f']) {
+  assert(!`${styles}\n${html}`.toLowerCase().includes(forbidden), `Forbidden V1/reference color found: ${forbidden}`)
 }
 
 const images = [
