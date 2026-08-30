@@ -1,126 +1,162 @@
-# Garden Gate Carle-direction homepage test
+# Garden Gate Stage 7 V2 — Carle Template Design Notes
+
+**Status:** Unapproved Stage 7 comparison prototype. This V2 replaces the first Carle-direction homepage design; it does not revise Stages 1–6 or approve a production design system.
 
 ## Audience and single job
 
-The primary audience is prospective families and caregivers. The homepage's single job is to help them recognize Garden Gate as a nonprofit, Reggio-inspired early-learning community, understand how children learn through relationships, projects, materials, play, documentation, and outdoor inquiry, then choose the right next step without turning the visit into an enrollment or fundraising funnel.
+The primary audience is prospective families and caregivers. The homepage must identify Garden Gate, make its Reggio-inspired learning visible, show all four programs, establish place and nonprofit trust, and route a family toward Programs, Our Approach, and Enrollment without inventing current operating details.
 
-## Design hypothesis
+## V2 hypothesis
 
-An art-book editorial composition can make Garden Gate's real learning evidence vivid when image scale, concise adjacent notes, and deliberate pacing clarify what children are doing. It fails if the page starts to resemble a museum program calendar, an exhibition index, a children's entertainment brand, or a generic preschool template.
+Test whether The Eric Carle Museum homepage's recognizable institutional template can organize Garden Gate's real photography, program information, materials, and dated evidence while remaining entirely Garden Gate in identity and content.
 
-## Primary-reference analysis
+## Primary-reference anatomy
 
-- **First impression:** The reference is controlled by a thin, quiet header, one dominant image, abrupt changes in module scale, and long pauses between dense information clusters. Garden Gate translates that confidence into a process-led opening and generous space around learning evidence, without using artwork as campaign imagery.
-- **Header and navigation:** A compact identity sits apart from two levels of navigation. Garden Gate uses its exact locked utility and main rows, a text wordmark, a distinct direct Donate action, and an intentionally disabled Portuguese control.
-- **Hero balance:** The reference gives the first image more area than the introductory copy and uses actions as a supporting rail. Garden Gate instead balances a direct family-facing identity statement with one real process photograph and two learning routes; no carousel, overlay text, or visit/event action is carried over.
-- **Typography:** Large editorial headings create contrast with small, practical information. Garden Gate uses Fraunces only for reflective display moments and Public Sans for body, navigation, dates, and controls; note text stays readable and mixed case.
-- **Images, crops, and captions:** The reference alternates a dominant image with smaller related images and keeps title/date information adjacent. Garden Gate varies scale by meaning—process, observation, collaboration, relationship, and place—and uses Studio Margin Notes for observable context, date/status, and publication cautions.
-- **Section order, backgrounds, and pacing:** White space and pale information fields separate dense exhibition and event groups. Garden Gate alternates mineral canvas, deep-ink comparison, open editorial image fields, weathered blue belonging, and moss enrollment according to content responsibility rather than copying the reference's module sequence.
-- **Repeated modules:** The reference avoids complete monotony by changing image scale inside repeated content families. Garden Gate repeats one note grammar while changing image proportion and note placement; Programs and News use different ruled systems because one supports comparison and the other supports dated evidence.
-- **Actions:** The reference distinguishes section-level actions from stronger ticket, event, shop, and membership actions. Garden Gate keeps the family journey primary, direct Donate globally visible but secondary, Begin Enrollment after sufficient context, and Why Support Matters separate from the donation handoff.
-- **Credibility and evidence:** Dates, content type, and practical status are visually attached to records. Garden Gate applies that principle to three dated first-party resources, the October 2023 place image, and restrained trust facts without adopting exhibition labels.
-- **Footer:** The reference ends with a compact dark information block. Garden Gate uses a larger, route-complete footer organized as Explore, Families, Connect, Policies, and verified direct contact/social information; no shop, hours, membership, or Portuguese footer route appears.
-- **Desktop-to-mobile transformation:** The reference implies that broad editorial modules become a direct single column. Garden Gate makes that behavior explicit: Logo, Donate, and Menu remain immediately available; all routes retain their grouping and order; every margin note moves directly beneath its image.
+The saved 1425 × 6429 screenshot is the primary composition record. The live site was also inspected at 1440 × 1000 and 390 × 844 on August 30, 2026. The live full-page capture contains duplicated carousel/stitch fragments; this prototype implements every actual module once.
 
-## Visual plan
+### Header
 
-### Color
+- Approximately 160–185px tall on desktop, white, and visually quiet.
+- Small institutional utility controls sit above a compact editorial navigation row.
+- The logo occupies a modest left block; navigation—not a promotional masthead—sets the scale.
+- Mobile becomes a roughly 150px white header with compact controls and identity before the hero.
 
-- Mineral canvas `#F7F7F2`: crisp, neutral page field rather than warm lifestyle beige.
-- Deep ink `#17231F`: long-form text and navigation.
-- Moss `#49634D`: place and trust fields.
-- Weathered blue `#DCE9EC`: quiet evidence and family-partnership fields.
-- Material cobalt `#2459B3`: links, focus, and Studio Margin Note rules.
-- Berry `#9D3152`: a separate, accessible Donate action.
+### Framed hero and attached bands
 
-The photographs provide most of the chroma. No gradients, glow, glass, orange/black identity, or rainbow classroom palette.
+- The dominant opening module sits inside the page frame with roughly 20–30px desktop side margins.
+- The image reads near 1.8:1 and occupies most of the first viewport below the header.
+- Story information is separated from the image by a dark caption field rather than a giant overlay headline.
+- A near-black information strip and saturated action band create an attached horizontal transition.
+- Combined band height is approximately 70–100px desktop and 130–190px when stacked on a phone.
 
-### Typography
+### Welcome pause and utility card
 
-- Display: Fraunces, a variable open-source serif with soft, irregular forms that suggest material handling without imitating the reference; fallback `Georgia, 'Times New Roman', serif`.
-- Body and interface: Public Sans, an open-source neutral sans designed for clear public information; fallback `Arial, Helvetica, sans-serif`.
-- Notes and evidence: Public Sans in regular and semibold weights, mixed case, with tabular numerals for dates. No fake handwriting, tiny all-caps system, or ornamental display text.
+- The page pauses for roughly 220–320px of white space before and around a bold uppercase section label.
+- A single pale neutral card is centered in a broad empty field.
+- The card is roughly 42–52% of the page width and 240–330px tall on desktop.
+- It contains one practical orientation idea; surrounding space is intentionally unfilled.
 
-The prototype may request the webfont files from Google Fonts; the documented system fallbacks preserve the layout when they are unavailable.
+### Main feature grid
 
-### Layout and pacing
+- A bold uppercase label introduces one dominant feature: image at roughly two thirds, pale text panel at roughly one third.
+- Three smaller image-led items follow in equal columns with precise gutters and compact labels.
+- Images carry the energy; copy remains short and editorial.
 
-- Use a 12-column wide grid, a 6-column tablet grid, and a 4-column phone grid.
-- Open with a direct identity statement beside one vivid process photograph.
-- Alternate large evidence images, concise text, a compact program comparison, and smaller process pairs.
-- Keep long text near 45–75 characters and reserve open space for legible notes rather than decorative emptiness.
-- Use square corners, thin rules, and background-role changes. Cards appear only where comparison or repeatability benefits families.
-- Collapse to one narrative column on phones; every adjacent note moves directly beneath its photograph.
+### Promotional band
 
-### Signature: Studio Margin Notes
+- A shallow full-width strip interrupts the white field without becoming a large card.
+- It is roughly 90–130px tall and contains one concise proposition plus one outlined action.
 
-Selected photographs receive a short, factual note in the adjacent margin. Each note identifies an observable learning role such as material investigation, project process, teacher observation, collaboration, or outdoor inquiry. A cobalt rule ties note to image. The notes never identify children, fabricate quotes, claim a date that is unavailable, or use scrapbook devices. On phones they sit immediately below the related image.
+### Programs/events grid
 
-## Composition sketch
+- A second uppercase label introduces a featured pale card paired with one large image.
+- Three smaller modules follow, maintaining a clear one-large/three-small hierarchy.
+- The reference uses dates and event taxonomy; Garden Gate substitutes program distinctions and invents no schedules.
 
-```text
-DESKTOP
-┌ utility links ──────────────────────────────────────────────────────┐
-├ wordmark | primary navigation | Donate | Portuguese unavailable ───┤
-│ identity statement + actions       │ large process image │ note    │
-├─────────────────────────────────────────────────────────────────────┤
-│ view of child statement           │ observation image + note       │
-│ programs: one comparative band across four supported groupings     │
-│ large approach image + note │ approach text │ two material studies │
-│ belonging text + relational image note                             │
-│ place image, wide                 │ founded/location trust facts    │
-│ dated News & Resources records                                     │
-│ clear enrollment bridge                                            │
-│ compact support: Donate + Why Support Matters                      │
-├ complete grouped footer + direct contact/social ───────────────────┤
+### Material display
 
-PHONE
-┌ wordmark | Donate | Menu ┐
-│ identity                 │
-│ image                    │
-│ note                     │
-│ actions                  │
-│ single-column story      │
-│ programs as ruled rows   │
-│ image → note → text      │
-│ enrollment → support     │
-│ grouped footer           │
-└──────────────────────────┘
-```
+- A pale display field contains five evenly spaced, object-like images in one horizontal row.
+- Captions are short and aligned; mobile becomes a compact two-column display without horizontal scrolling.
+- Garden Gate uses process/material photographs, not products, merchandise, or book covers.
 
-## Selected Garden Gate assets and roles
+### Footer
 
-- `ASSET-005` — opening process image: watercolor, brushes, flowers, and a child working; the page begins with learning activity rather than institutional architecture.
-- `ASSET-006` — painting process: concentration, color, tools, and a project in progress.
-- `ASSET-007` — clay and construction: hands, tools, material testing, and three-dimensional problem solving.
-- `ASSET-129` — October 2023 meadow walk: dated outdoor inquiry and a wider sense of place; only one file from its confirmed duplicate group is used.
-- `ASSET-253` — collaborative translucent-tile exploration at a table: relationships, shared materials, light, and revision.
-- `ASSET-254` — observation and drawing: visible documentation and sustained attention.
-- `ASSET-264` — reading and drawing on the campus deck: relationship, learning, and Featherstone context.
+- A near-black rectangular footer closes the page with approximately 340–420px desktop height.
+- Identity/contact, practical information, grouped navigation, and policies form compact columns separated by rules.
+- Mobile stacks the same content into a substantial ending rather than a thin legal bar.
 
-All 282 retained Stage 2 images and all 284 media records were reviewed before the final set was confirmed. The seven selected files are retained official-site photographs that the project record treats as user-cleared for this prototype. ASSET-129 retains its October 2023 archive date; the other image dates are not established, so their notes do not imply recency. No child is named. Crops keep the learning activity legible, and alt text describes each image's purpose rather than identity.
+## Approximate V2 geometry
 
-ASSET-254 visibly includes a photographic reference and requires source-image/context review before publication. ASSET-005 through ASSET-007 are small source files and need higher-resolution approved masters for a final site. All child/photographer permissions, currentness, identities, and publication contexts remain launch approval needs even though local prototype consideration is cleared.
+- Maximum outer frame: 1380px with 24–30px desktop gutters; inner editorial frame: 1240–1280px.
+- Desktop hero ratio: about 16:9, cropped wide without overlay copy.
+- Main feature split: 68% image / 32% text; featured-program split: 34% text / 66% image.
+- Small-feature grid: three equal columns with 24–30px gutters.
+- Major white pauses: 120–190px; routine section spacing: 80–120px.
+- Pale cards: `#EAEAEE` or a very pale `#539EDF` tint.
+- Blue bands: 96–120px desktop; 140–190px phone when actions stack.
+- Section labels: uppercase, 22–28px desktop, compact tracking, with a small right-side route when useful.
+- Feature headings: 36–52px desktop; 30–38px phone. No V1-scale 90–100px display headline.
 
-## Pattern-level translation from the reference
+## Carle-to-Garden-Gate module mapping
 
-- A disciplined two-level header that separates durable utility routes from the main family journey becomes Garden Gate's exact locked two-row navigation.
-- Strong contrast between large image moments and compact editorial information becomes a process-led hero, open approach compositions, and a concise evidence band.
-- Varied image scale becomes meaning-based roles: process is intimate, collaboration is broad, observation is portrait, and place is expansive.
-- Captions, dates, status, and attribution as designed information become Studio Margin Notes and visibly dated News & Resources records.
-- Dense content remains navigable through clear section changes, rules, and whitespace, while Garden Gate uses fewer modules and no carousel.
-- The desktop-to-mobile implication becomes a direct single column in which the note always follows its image and the menu preserves all labels, destinations, and states.
+| Carle template module | Garden Gate substitution |
+|---|---|
+| Compact institutional header | Locked utility and main navigation in exact order; text wordmark; direct Donate; inactive Em Português |
+| Framed artwork/exhibition hero | ASSET-237, a wide collaborative clay investigation; concise Garden Gate identity below |
+| Black information strip | Oak Bluffs nonprofit identity, Reggio-inspired boundary, and view of children as capable thinkers |
+| Orange Programs & Events action | Garden Gate blue **Explore Programs** → `/programs` |
+| WELCOME pause | **WELCOME TO GARDEN GATE** with unusually generous white space |
+| Plan Your Visit utility card | Family orientation card: mission/view of the child with **Explore Programs** and **See Our Approach** |
+| Explore Art & Books feature | **Learning Through Materials & Relationships** using ASSET-253 and a pale text panel |
+| Three exhibition thumbnails | Observation/documentation with ASSET-254; projects/materials/art with ASSET-006; outdoor inquiry with ASSET-003 |
+| Membership/promotion strip | Garden Gate blue **See Our Approach** band |
+| Programs & Events featured module | Studio Two as the large feature with ASSET-235; no dates, times, or event claims |
+| Three smaller event modules | Studio One with ASSET-201; Kindergarten with ASSET-264; Summer with ASSET-129 |
+| Second promotional strip | Deep-blue enrollment band with **Begin Enrollment** → `/enrollment` |
+| Bookshop/product display | **Materials, Projects & Documentation** using ASSET-005, 007, 149, 203, and 165 |
+| Editorial/current-content module | ASSET-009 with Featherstone place and nonprofit trust plus three dated 2026 News & Resources records |
+| Member-support strip | Shallow Garden Gate blue support band with direct **Donate** and separate **Why Support Matters** |
+| Dense museum footer | Stage 5 Explore, Families, Connect, Policies, and verified contact/social groups; no Portuguese footer link |
 
-## Deliberately not copied
+## Selected Garden Gate assets and crop roles
 
-No Carle text, artwork, illustrations, caterpillar mark, orange/black identity, serif pairing, double chevrons, carousel, exhibition grid, shop or membership logic, campaign strip, section order, navigation structure, animation, labels, or branded interactions appear in the prototype. The reference screenshot remains research only and is not copied into the destination.
+The complete 283-row Stage 2 inventory and all 282 retained image files were reviewed through six labeled contact sheets before selection. Every selected photograph remains subject to the inventory's child/photographer rights warning.
 
-## Pre-build critique and correction
+- **ASSET-237 — hero:** collaborative clay investigation, 2500 × 1875; wide crop retaining table, hands, materials, and relationships.
+- **ASSET-253 — main approach feature:** translucent construction, 2400 × 1799; wide crop centered on children and color.
+- **ASSET-254 — observation:** drawing from a photographic reference, 2500 × 3333; source photograph requires publication review.
+- **ASSET-006 — painting/project process:** 720 × 960; portrait crop; limited master resolution.
+- **ASSET-003 — outdoor inquiry:** tree exploration, 960 × 720; landscape crop with environmental context.
+- **ASSET-235 — Studio Two feature:** group making, 2500 × 2500; wide center crop.
+- **ASSET-201 — Studio One:** block construction, 2500 × 2500; square crop retaining the environment.
+- **ASSET-264 — Kindergarten:** drawing/reading on the deck, 2500 × 3333; crop retains children and setting.
+- **ASSET-129 — Summer:** meadow walk, 2500 × 3333; landscape crop retains group and vegetation.
+- **ASSET-005 — watercolor:** 960 × 720; display crop around watercolor, flowers, and hand; limited master resolution.
+- **ASSET-007 — clay/tools:** 720 × 960; display crop around tool, clay object, and hands; limited master resolution.
+- **ASSET-009 — place and trust:** exterior learning setting, 960 × 720; wide crop used only as supported Garden Gate place context, with no property-ownership claim.
+- **ASSET-149 — paint/process:** 2500 × 1875; crop around hands, brush, and wet material.
+- **ASSET-203 — translucent geometry:** 2500 × 2500; crop around the light-table construction.
+- **ASSET-165 — investigation:** 2500 × 3333; crop around hand and material containers; visible third-party can mark must be excluded by crop or reviewed.
 
-- **Risk: generic art-school editorial.** A cream page, high-contrast fashion serif, hairline broadsheet grid, and artful collage would be predictable. **Correction:** use a cooler mineral canvas, a soft material-responsive serif, strong sans utility text, and one controlled note system instead of collage.
-- **Risk: children's museum.** Bright color blocking, exhibition tiles, events, mascots, and image-led novelty could make the school feel like a visitor attraction. **Correction:** give every image a learning role, keep programs in a practical comparison band, and reserve dates for actual evidence records.
-- **Risk: generic preschool.** Rounded cards, doodles, rainbow colors, staged warmth, and slogan-first copy would flatten Garden Gate's specificity. **Correction:** use documentary photographs, exact program names, observable verbs, source-aware notes, and Featherstone language.
-- **Risk: museum-like evidence labels.** Over-formal catalog captions could make children feel exhibited. **Correction:** notes explain process, material, relationship, and context in plain language; they do not identify children, title artwork, or present learning as a collection.
-- **Risk: Donate competes with families.** A high-contrast action could dominate the first story. **Correction:** keep Donate globally accessible in berry while the hero's primary action remains Explore Programs and the support case stays compact near the end.
+## Color and typography
 
-This is one coherent Stage 7 comparison prototype. Its fonts, colors, crops, notes, copy, components, and interactions remain exploratory and unapproved.
+- Garden Gate blue `#539EDF`; deep action blue `#1470AF`; white `#FFFFFF`; black `#000000`; light gray `#EAEAEE`; deep accessible blue `#082B46`; very pale blue `#EEF7FD`.
+- No cream, green, berry, coral, pink, orange/red identity, gradient, glass, or shadow-led system is retained.
+- **IBM Plex Sans**, with Arial and Helvetica fallbacks, carries navigation, body, labels, dates, buttons, and utility text.
+- **Newsreader**, with Georgia and Times New Roman fallbacks, is limited to selected feature titles.
+- Uppercase labels carry hierarchy; body copy is never all caps. Headings remain controlled rather than becoming a V1 expressive-serif system.
+
+## Mobile transformation
+
+- Compact white header keeps wordmark, Donate, and Menu immediately available.
+- Framed hero uses 16px gutters; the black information and blue action bands stack below it.
+- White pauses remain but reduce proportionally.
+- Featured splits and three-column grids become ordered image/story stacks.
+- Promotional bands stay shallow and rectangular.
+- The material display becomes two columns without horizontal scrolling.
+- Footer columns stack with clear labels and rules.
+- Menu retains Escape closing, focus transfer/restoration, route-change closing, focus containment, and body-scroll control.
+
+## First-pass patterns removed
+
+- Cream/mineral canvas, green program field, berry Donate, and cobalt margin-note palette.
+- Giant expressive serif hero headline and continuous editorial school-brochure sequence.
+- “Studio Margin Notes” captions and evidence-rule device.
+- Dark program comparison table and newspaper-like trust facts.
+- Open image-essay sections for belonging and place.
+- V1's long alternating image/text rhythm and centered enrollment block.
+- V1 Fraunces/Public Sans pairing and repeated image/note composition.
+
+## Pre-build critique and corrections
+
+- **Generic preschool cards:** use the reference's one-large/three-small hierarchy, hard rectangular panels, strict gutters, and white pauses instead of equal rounded cards.
+- **Museum content masquerade:** remove event, exhibition, shop, and membership behavior; map only supported Garden Gate responsibilities into those structural roles.
+- **Carle reskin:** use only Garden Gate blue, text wordmark, locked routes, Garden Gate photography, and Garden Gate language.
+- **V1 persistence:** replace the component tree and stylesheet outright; do not layer V2 overrides over obsolete selectors.
+- **Unsupported operations:** show four programs without dates, hours, availability, ratios, tuition, capacity, or licensing claims.
+- **Product-like materials:** label images as process/material/documentation roles and add no prices, carts, or product language.
+- **Rights:** maintain prototype warnings; ASSET-254 and ASSET-165 require special source/mark review.
+
+## Protected boundary
+
+The large-scale structure intentionally resembles The Carle's museum template. The implementation contains no Carle logo, caterpillar, copy, artwork, book imagery, icons, orange/red identity, carousel, exhibition/event content, shop items, membership language, or proprietary assets. The GardenGate evidence folder remains read-only.

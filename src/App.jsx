@@ -18,26 +18,90 @@ const primaryLinks = [
   { label: 'Enrollment', href: '/enrollment' },
 ]
 
+const practices = [
+  {
+    label: 'Observation & documentation',
+    title: 'Ideas become visible',
+    copy: 'Teachers listen, observe, document, reflect, and prepare invitations that extend children’s questions.',
+    image: '/images/asset-254-observation.jpg',
+    alt: 'A child draws on white paper while looking toward a photographic reference.',
+    className: 'practice-card--observation',
+  },
+  {
+    label: 'Projects, materials & art',
+    title: 'Questions develop over time',
+    copy: 'Paint, clay, drawing, construction, natural materials, and found objects help children investigate and communicate.',
+    image: '/images/asset-006-painting.jpg',
+    alt: 'A child uses a brush to mix bright paint on paper beside small containers of color.',
+    className: 'practice-card--painting',
+  },
+  {
+    label: 'Play, relationships & place',
+    title: 'Learning is connected',
+    copy: 'Play and time outdoors support collaboration, negotiation, empathy, problem-solving, and connection to place.',
+    image: '/images/asset-003-outdoor.jpg',
+    alt: 'Children climb and balance together on the low branches of a large tree.',
+    className: 'practice-card--outdoor',
+  },
+]
+
 const programs = [
   {
     name: 'Studio One',
-    description:
-      'The younger group, mostly two- and three-year-olds, builds relationships through play, studio materials, and time outdoors.',
-  },
-  {
-    name: 'Studio Two',
-    description:
-      'Primarily four- and five-year-olds learn in a combined preschool and Kindergarten environment shaped by projects, collaboration, and investigation.',
+    label: 'Younger group',
+    copy: 'Mostly two- and three-year-olds build relationships through play, studio materials, and time outdoors.',
+    image: '/images/asset-201-construction.jpg',
+    alt: 'Two children arrange wooden blocks and cardboard tubes in a classroom construction.',
+    className: 'program-card--studio-one',
   },
   {
     name: 'Kindergarten',
-    description:
-      'Part of the combined model, with individualized learning through inquiry, play, art, relationships, and the outdoors.',
+    label: 'Combined model',
+    copy: 'Part of the combined preschool and Kindergarten environment, with individualized learning through inquiry, play, art, and relationships.',
+    image: '/images/asset-264-place.jpg',
+    alt: 'Two children draw and look at books together on a striped mat on a wooden deck.',
+    className: 'program-card--kindergarten',
   },
   {
     name: 'Summer',
-    description:
-      'Learning connected to nature, place, creative expression, storytelling, building, relationships, and reflection.',
+    label: 'Nature & creative expression',
+    copy: 'Learning connects nature, place, storytelling, building, creative expression, relationships, and reflection.',
+    image: '/images/asset-129-meadow.jpg',
+    alt: 'Children and an educator walk through tall meadow grasses in a wooded landscape.',
+    className: 'program-card--summer',
+  },
+]
+
+const materials = [
+  {
+    name: 'Watercolor & natural materials',
+    image: '/images/asset-005-watercolor.jpg',
+    alt: 'Watercolor pans, brushes, flowers, and a child’s hand surround a painting in progress.',
+    className: 'material-item--watercolor',
+  },
+  {
+    name: 'Clay & tools',
+    image: '/images/asset-007-clay.jpg',
+    alt: 'Hands use a small cutting wheel beside clay, tools, and a constructed vehicle.',
+    className: 'material-item--clay',
+  },
+  {
+    name: 'Paint as process',
+    image: '/images/asset-149-paint.jpg',
+    alt: 'Paint-covered hands and a brush move wet gray-blue paint across a large surface.',
+    className: 'material-item--paint',
+  },
+  {
+    name: 'Light & geometry',
+    image: '/images/asset-203-translucent.jpg',
+    alt: 'A construction of translucent colored geometric tiles glows on a light table.',
+    className: 'material-item--light',
+  },
+  {
+    name: 'Collecting & comparing',
+    image: '/images/asset-165-investigation.jpg',
+    alt: 'A child reaches toward transparent containers holding small materials for investigation.',
+    className: 'material-item--collection',
   },
 ]
 
@@ -71,13 +135,12 @@ function Wordmark({ compact = false }) {
   )
 }
 
-function StudioNote({ label, children, status }) {
+function ArrowLink({ href, children, light = false, className = '' }) {
   return (
-    <figcaption className="studio-note">
-      <span className="studio-note__label">{label}</span>
-      <p>{children}</p>
-      {status ? <span className="studio-note__status">{status}</span> : null}
-    </figcaption>
+    <a className={`arrow-link${light ? ' arrow-link--light' : ''} ${className}`.trim()} href={href}>
+      <span>{children}</span>
+      <span aria-hidden="true">→</span>
+    </a>
   )
 }
 
@@ -90,9 +153,7 @@ function Header() {
 
   const closeMenu = (restoreFocus = true) => {
     setMenuOpen(false)
-    if (restoreFocus) {
-      window.requestAnimationFrame(() => menuButtonRef.current?.focus())
-    }
+    if (restoreFocus) window.requestAnimationFrame(() => menuButtonRef.current?.focus())
   }
 
   useEffect(() => {
@@ -100,9 +161,7 @@ function Header() {
 
     const previousOverflow = document.body.style.overflow
     document.body.style.overflow = 'hidden'
-    window.requestAnimationFrame(() => {
-      menuPanelRef.current?.querySelector('button, a[href]')?.focus()
-    })
+    window.requestAnimationFrame(() => menuPanelRef.current?.querySelector('button, a[href]')?.focus())
 
     const onKeyDown = (event) => {
       if (event.key === 'Escape') {
@@ -117,7 +176,7 @@ function Header() {
           'a[href], button:not([disabled]), [tabindex]:not([tabindex="-1"])',
         ),
       ]
-      if (focusable.length === 0) return
+      if (!focusable.length) return
       const first = focusable[0]
       const last = focusable[focusable.length - 1]
 
@@ -142,7 +201,7 @@ function Header() {
   }, [menuOpen])
 
   useEffect(() => {
-    const media = window.matchMedia('(min-width: 1181px)')
+    const media = window.matchMedia('(min-width: 1121px)')
     const onChange = (event) => {
       if (event.matches) setMenuOpen(false)
     }
@@ -165,13 +224,11 @@ function Header() {
     }
   }, [aboutOpen])
 
-  const closeOnNavigate = () => closeMenu(false)
-
   return (
     <header className="site-header">
       <div className="desktop-header">
-        <nav className="utility-row" aria-label="Utility navigation">
-          <div className="header-inner utility-row__inner">
+        <nav className="utility-nav" aria-label="Utility navigation">
+          <div className="header-frame utility-nav__inner">
             {utilityLinks.map((link) => (
               <a key={link.href} href={link.href}>
                 {link.label}
@@ -180,8 +237,8 @@ function Header() {
           </div>
         </nav>
 
-        <div className="main-row">
-          <div className="header-inner main-row__inner">
+        <div className="main-nav-row">
+          <div className="header-frame main-nav-row__inner">
             <a className="wordmark-link" href="/" aria-label="Garden Gate home" aria-current="page">
               <Wordmark />
             </a>
@@ -199,13 +256,9 @@ function Header() {
                   aria-label="Show People under About"
                   onClick={() => setAboutOpen((current) => !current)}
                 >
-                  <span aria-hidden="true">▾</span>
+                  <span aria-hidden="true">⌄</span>
                 </button>
-                <div
-                  className="nav-parent__menu"
-                  id="about-submenu"
-                  hidden={!aboutOpen}
-                >
+                <div className="nav-parent__menu" id="about-submenu" hidden={!aboutOpen}>
                   <a href="/about/people" onClick={() => setAboutOpen(false)}>
                     People
                   </a>
@@ -226,10 +279,8 @@ function Header() {
                 aria-label="Em Português, currently unavailable"
                 title="Portuguese content is not currently available"
               >
-                Em Português
-                <span aria-hidden="true" className="language-control__status">
-                  Unavailable
-                </span>
+                <span>Em Português</span>
+                <span aria-hidden="true" className="language-control__status">Unavailable</span>
               </button>
             </div>
           </div>
@@ -237,12 +288,6 @@ function Header() {
       </div>
 
       <div className="mobile-header">
-        <a className="wordmark-link" href="/" aria-label="Garden Gate home" aria-current="page">
-          <Wordmark compact />
-        </a>
-        <a className="button button--donate button--mobile" href={DONATE_URL}>
-          Donate
-        </a>
         <button
           type="button"
           className="menu-trigger"
@@ -251,8 +296,13 @@ function Header() {
           aria-controls="mobile-menu"
           onClick={() => setMenuOpen(true)}
         >
-          Menu
+          <span className="menu-trigger__bars" aria-hidden="true"><span /><span /><span /></span>
+          <span>Menu</span>
         </button>
+        <a className="wordmark-link wordmark-link--mobile" href="/" aria-label="Garden Gate home" aria-current="page">
+          <Wordmark compact />
+        </a>
+        <a className="button button--donate button--mobile" href={DONATE_URL}>Donate</a>
       </div>
 
       {menuOpen ? (
@@ -272,29 +322,24 @@ function Header() {
             aria-label="Site navigation"
           >
             <div className="mobile-menu__top">
-              <span className="mobile-menu__title">Navigation</span>
-              <button type="button" className="menu-close" onClick={() => closeMenu()}>
-                Close
-              </button>
+              <Wordmark compact />
+              <button type="button" className="menu-close" onClick={() => closeMenu()}>Close</button>
             </div>
 
             <nav className="mobile-menu__primary" aria-label="Mobile primary navigation">
               {primaryLinks.map((link) => (
                 <div className="mobile-menu__item" key={link.href}>
-                  <a href={link.href} onClick={closeOnNavigate}>
-                    {link.label}
-                  </a>
+                  <a href={link.href} onClick={() => closeMenu(false)}>{link.label}</a>
                   {link.child ? (
-                    <a
-                      className="mobile-menu__child"
-                      href={link.child.href}
-                      onClick={closeOnNavigate}
-                    >
+                    <a className="mobile-menu__child" href={link.child.href} onClick={() => closeMenu(false)}>
                       {link.child.label}
                     </a>
                   ) : null}
                 </div>
               ))}
+              <div className="mobile-menu__item mobile-menu__item--donate">
+                <a href={DONATE_URL} onClick={() => closeMenu(false)}>Donate</a>
+              </div>
               <button
                 className="mobile-language-control"
                 type="button"
@@ -308,9 +353,7 @@ function Header() {
 
             <nav className="mobile-menu__utility" aria-label="Mobile utility navigation">
               {utilityLinks.map((link) => (
-                <a key={link.href} href={link.href} onClick={closeOnNavigate}>
-                  {link.label}
-                </a>
+                <a key={link.href} href={link.href} onClick={() => closeMenu(false)}>{link.label}</a>
               ))}
             </nav>
           </div>
@@ -320,363 +363,270 @@ function Header() {
   )
 }
 
-function App() {
+function SectionHeading({ id, title, action, href }) {
+  return (
+    <div className="section-heading">
+      <h2 id={id}>{title}</h2>
+      {action && href ? <ArrowLink href={href}>{action}</ArrowLink> : null}
+    </div>
+  )
+}
+
+function FooterGroup({ title, links }) {
+  return (
+    <nav className="footer-group" aria-label={`${title} footer navigation`}>
+      <h2>{title}</h2>
+      {links.map((link) => <a key={link.href} href={link.href}>{link.label}</a>)}
+    </nav>
+  )
+}
+
+function Footer() {
+  return (
+    <footer className="site-footer">
+      <div className="footer-frame footer-grid">
+        <div className="footer-identity">
+          <a className="wordmark-link wordmark-link--footer" href="/" aria-label="Garden Gate home">
+            <Wordmark />
+          </a>
+          <p>Nonprofit early education in Oak Bluffs, Massachusetts.</p>
+        </div>
+
+        <FooterGroup title="Explore" links={[
+          { label: 'Home', href: '/' },
+          { label: 'Programs', href: '/programs' },
+          { label: 'Our Approach', href: '/approach' },
+          { label: 'About', href: '/about' },
+          { label: 'People', href: '/about/people' },
+        ]} />
+        <FooterGroup title="Families" links={[
+          { label: 'Enrollment', href: '/enrollment' },
+          { label: 'Current Families', href: '/families' },
+          { label: 'News & Resources', href: '/news' },
+        ]} />
+        <FooterGroup title="Connect" links={[
+          { label: 'For Educators', href: '/professional-development' },
+          { label: 'Employment', href: '/employment' },
+          { label: 'Support', href: '/support' },
+          { label: 'Contact', href: '/contact' },
+          { label: 'Donate', href: DONATE_URL },
+        ]} />
+        <FooterGroup title="Policies" links={[
+          { label: 'Privacy', href: '/privacy' },
+          { label: 'Accessibility', href: '/accessibility' },
+        ]} />
+
+        <div className="footer-contact">
+          <h2>Contact</h2>
+          <address>
+            <span>30 Featherstone Lane</span>
+            <span>Oak Bluffs, MA 02557</span>
+            <span className="footer-contact__mailing">Mail: PO Box 2666, Vineyard Haven, MA 02568</span>
+          </address>
+          <a href="tel:+17745632435">(774) 563-2435</a>
+          <a href="mailto:gardengatecdc@hotmail.com">gardengatecdc@hotmail.com</a>
+          <div className="footer-social">
+            <a href="https://www.facebook.com/GardenGateCDC/">Facebook</a>
+            <a href="https://www.instagram.com/gardengatecdc/">Instagram</a>
+          </div>
+        </div>
+      </div>
+      <div className="footer-frame footer-bottom">
+        <span>Garden Gate Child Development Center</span>
+        <span>Unapproved Stage 7 comparison prototype</span>
+      </div>
+    </footer>
+  )
+}
+
+export default function App() {
   return (
     <>
-      <a className="skip-link" href="#main-content">
-        Skip to main content
-      </a>
+      <a className="skip-link" href="#main-content">Skip to main content</a>
       <Header />
 
       <main id="main-content">
-        <section className="hero section-shell" aria-labelledby="hero-title">
-          <div className="hero-grid">
-            <div className="hero-copy">
-              <p className="context-line">Oak Bluffs, Massachusetts · nonprofit early education</p>
-              <h1 id="hero-title">An early-learning community where children’s ideas take shape.</h1>
-              <p className="hero-copy__intro">
-                Garden Gate Child Development Center is a Reggio-inspired community where
-                relationships, projects, materials, play, documentation, and time outdoors help
-                children investigate and communicate.
-              </p>
-              <div className="action-row">
-                <a className="button button--primary" href="/programs">
-                  Explore Programs
-                </a>
-                <a className="text-action" href="/approach">
-                  See Our Approach
-                </a>
+        <section className="hero-section" aria-labelledby="home-title">
+          <div className="outer-frame hero-frame">
+            <img
+              className="hero-image"
+              src="/images/asset-237-clay-collaboration.jpg"
+              alt="Children gather around a table to work with clay, small animal figures, and wooden tools."
+            />
+            <div className="hero-transition">
+              <div className="hero-information">
+                <p className="micro-label">Garden Gate Child Development Center · Oak Bluffs</p>
+                <h1 id="home-title">A nonprofit early-learning community where children’s ideas matter.</h1>
+                <p>Reggio-inspired learning through relationships, projects, materials, play, documentation, and time outdoors.</p>
               </div>
+              <a className="hero-action" href="/programs">
+                <span className="hero-action__label">Explore Programs</span>
+                <span aria-hidden="true">→</span>
+              </a>
             </div>
-
-            <figure className="evidence-figure evidence-figure--hero">
-              <img
-                src="/images/asset-005-watercolor.jpg"
-                alt="A child paints with watercolors beside jars of flowers and brushes."
-              />
-              <StudioNote label="Material study" status="Image date not established">
-                Watercolor, brushes, and flowers keep the process—not a finished product—at the
-                center of the first impression.
-              </StudioNote>
-            </figure>
           </div>
         </section>
 
-        <section className="view-of-child section-shell" aria-labelledby="view-title">
-          <div className="view-grid">
-            <div className="view-statement">
-              <p className="section-context">Mission and view of the child</p>
-              <h2 id="view-title">Children are capable thinkers. Their ideas are worth listening to.</h2>
-              <p>
-                Garden Gate’s mission centers each child’s development and self-worth, creativity
-                as a way to communicate and solve problems, fairness in relationship, and the
-                ability to contribute to community.
-              </p>
-            </div>
-            <figure className="evidence-figure evidence-figure--observation">
-              <img
-                src="/images/asset-254-observation.jpg"
-                alt="A child draws while looking closely at a photographic reference."
-              />
-              <StudioNote label="Observation" status="Publication context needs review">
-                Drawing from a reference makes sustained attention visible. The photographic
-                source inside this image needs separate publication review.
-              </StudioNote>
-            </figure>
-          </div>
-        </section>
-
-        <section className="programs section-shell" aria-labelledby="programs-title">
-          <div className="programs-heading">
-            <p className="section-context section-context--light">Programs at a glance</p>
-            <h2 id="programs-title">Four ways into the same connected approach.</h2>
-            <p>
-              The homepage keeps the program set complete and comparable while leaving schedules,
-              rates, capacity, and availability to verified program information.
-            </p>
-          </div>
-          <dl className="program-list">
-            {programs.map((program) => (
-              <div className="program-row" key={program.name}>
-                <dt>{program.name}</dt>
-                <dd>{program.description}</dd>
+        <section className="welcome-section" aria-labelledby="welcome-title">
+          <div className="content-frame welcome-inner">
+            <p className="museum-label">Welcome to Garden Gate</p>
+            <article className="orientation-card">
+              <p className="micro-label">For prospective families</p>
+              <h2 id="welcome-title">Children are capable thinkers. Their ideas are worth listening to.</h2>
+              <p>Garden Gate supports each child’s development and self-worth through creativity, fairness, authentic experiences, relationships, and community.</p>
+              <div className="orientation-card__actions">
+                <a className="button button--primary" href="/programs">Explore Programs</a>
+                <ArrowLink href="/approach">See Our Approach</ArrowLink>
               </div>
-            ))}
-          </dl>
-          <a className="text-action text-action--light" href="/programs">
-            Explore Programs
-          </a>
+            </article>
+          </div>
         </section>
 
-        <section className="approach section-shell" aria-labelledby="approach-title">
-          <div className="approach-intro">
-            <p className="section-context">The approach in action</p>
-            <h2 id="approach-title">Learning is made visible through process.</h2>
-            <p>
-              Teachers observe and listen, document what they notice, reflect with one another,
-              and prepare invitations that let children’s questions develop through projects over
-              time.
-            </p>
-          </div>
+        <section className="approach-section content-frame" aria-labelledby="approach-section-title">
+          <SectionHeading id="approach-section-title" title="Learning Through Materials & Relationships" action="See Our Approach" href="/approach" />
 
-          <figure className="evidence-figure evidence-figure--collaboration">
+          <article className="approach-feature">
             <img
               src="/images/asset-253-collaboration.jpg"
-              alt="Children work together with translucent colored tiles at a studio table."
+              alt="Children and an educator arrange translucent colored tiles together across a table."
             />
-            <StudioNote label="Collaboration" status="Image date not established">
-              Shared translucent materials create a reason to compare, negotiate, arrange, and
-              revise ideas together.
-            </StudioNote>
-          </figure>
-
-          <div className="approach-practices">
-            <article>
-              <h3>Observation and documentation</h3>
-              <p>
-                Listening includes words, gestures, behavior, art, play, and relationship.
-                Documentation gives teachers and children something concrete to revisit.
-              </p>
-            </article>
-            <article>
-              <h3>Projects, materials, and art</h3>
-              <p>
-                Paint, clay, drawing, construction, natural materials, and found objects become
-                languages for investigating and communicating—not decoration added after learning.
-              </p>
-            </article>
-            <article>
-              <h3>Play, relationships, and place</h3>
-              <p>
-                Play supports imagination, collaboration, negotiation, empathy, resilience, and
-                problem-solving. Outdoor inquiry extends those relationships to weather, movement,
-                living things, and familiar places.
-              </p>
-            </article>
-          </div>
-
-          <div className="material-studies">
-            <figure className="evidence-figure evidence-figure--material evidence-figure--paint">
-              <img
-                src="/images/asset-006-painting.jpg"
-                alt="A child paints at a studio table surrounded by brushes and color."
-              />
-              <StudioNote label="Project process" status="Image date not established">
-                Tools stay visible and within reach, making choices and revisions part of the
-                evidence.
-              </StudioNote>
-            </figure>
-            <figure className="evidence-figure evidence-figure--material evidence-figure--clay">
-              <img
-                src="/images/asset-007-clay.jpg"
-                alt="Hands shape clay around a small wheeled construction beside studio tools."
-              />
-              <StudioNote label="Material investigation" status="Image date not established">
-                Clay, tools, and construction show three-dimensional problem-solving in progress.
-              </StudioNote>
-            </figure>
-          </div>
-
-          <a className="text-action approach__action" href="/approach">
-            See Our Approach
-          </a>
-        </section>
-
-        <section className="belonging section-shell" aria-labelledby="belonging-title">
-          <div className="belonging-grid">
-            <div className="belonging-copy">
-              <p className="section-context">Belonging and family partnership</p>
-              <h2 id="belonging-title">Belonging is practiced in daily relationships.</h2>
-              <p>
-                Inclusive materials, anti-bias learning, family voice, daily communication, and
-                connection to outside resources help link children’s experience at Garden Gate
-                with the people and communities around them.
-              </p>
-              <p>
-                The homepage holds this commitment at overview level without promising unverified
-                services, tuition support, language capacity, or outcomes.
-              </p>
+            <div className="approach-feature__copy">
+              <p className="micro-label">The approach in action</p>
+              <h3>Learning is made visible through process.</h3>
+              <p>Teachers observe and listen, projects give ideas time to develop, and materials offer children many ways to investigate and communicate.</p>
+              <p>Play, relationships, documentation, belonging, and outdoor inquiry are connected parts of the same Reggio-inspired approach.</p>
             </div>
-            <figure className="evidence-figure evidence-figure--belonging">
-              <img
-                src="/images/asset-264-place.jpg"
-                alt="Children read and draw together on a deck overlooking the Featherstone campus."
-              />
-              <StudioNote label="Relationship + place" status="Image date not established">
-                Shared reading and drawing on the deck connect conversation, attention, and the
-                campus environment.
-              </StudioNote>
-            </figure>
+          </article>
+
+          <div className="practice-grid">
+            {practices.map((practice) => (
+              <article className={`practice-card ${practice.className}`} key={practice.title}>
+                <img src={practice.image} alt={practice.alt} />
+                <p className="card-label">{practice.label}</p>
+                <h3>{practice.title}</h3>
+                <p>{practice.copy}</p>
+              </article>
+            ))}
           </div>
         </section>
 
-        <section className="place section-shell" aria-labelledby="place-title">
-          <figure className="evidence-figure evidence-figure--place">
+        <section className="promo-band promo-band--approach" aria-label="Our Approach action">
+          <div className="content-frame promo-band__inner">
+            <p>See how observation, projects, materials, play, relationships, belonging, and outdoor inquiry work together.</p>
+            <a className="button button--outline-light" href="/approach">See Our Approach</a>
+          </div>
+        </section>
+
+        <section className="programs-section content-frame" aria-labelledby="programs-section-title">
+          <SectionHeading id="programs-section-title" title="Programs at Garden Gate" action="Explore Programs" href="/programs" />
+
+          <article className="program-feature">
+            <div className="program-feature__copy">
+              <p className="card-label">Primarily four- and five-year-olds</p>
+              <h3>Studio Two</h3>
+              <p>A combined preschool and Kindergarten environment shaped by projects, collaboration, investigation, relationships, and creative materials.</p>
+              <ArrowLink href="/programs">Compare all programs</ArrowLink>
+            </div>
             <img
-              src="/images/asset-129-meadow.jpg"
-              alt="Children walk through a sunlit meadow during an outdoor learning experience."
+              src="/images/asset-235-group-making.jpg"
+              alt="Children work across shared tables with drawing tools and constructed materials in a classroom studio."
             />
-            <StudioNote label="Archived evidence" status="October 2023 newsletter archive">
-              A meadow walk shows place as part of inquiry. The dated image is evidence of a
-              documented moment, not a promise of current schedule or frequency.
-            </StudioNote>
-          </figure>
+          </article>
 
-          <div className="place-copy">
-            <p className="section-context">Featherstone campus and trust</p>
-            <h2 id="place-title">Grounded in a place with room to observe.</h2>
-            <p>
-              Garden Gate is located at 30 Featherstone Lane on the Featherstone Center for the
-              Arts campus in Oak Bluffs. Campus open space and nearby trails support movement,
-              observation, inquiry, and connection to place.
-            </p>
-            <div className="trust-facts" aria-label="Garden Gate trust facts">
-              <div>
-                <span className="trust-facts__value">1999</span>
-                <span className="trust-facts__label">Founded</span>
-              </div>
-              <div>
-                <span className="trust-facts__value">Nonprofit</span>
-                <span className="trust-facts__label">Early education organization</span>
-              </div>
-              <div>
-                <span className="trust-facts__value">Oak Bluffs</span>
-                <span className="trust-facts__label">Featherstone campus location</span>
-              </div>
+          <div className="program-grid">
+            {programs.map((program) => (
+              <article className={`program-card ${program.className}`} key={program.name}>
+                <img src={program.image} alt={program.alt} />
+                <p className="card-label">{program.label}</p>
+                <h3>{program.name}</h3>
+                <p>{program.copy}</p>
+              </article>
+            ))}
+          </div>
+        </section>
+
+        <section className="promo-band promo-band--enrollment" aria-labelledby="enrollment-title">
+          <div className="content-frame promo-band__inner">
+            <div>
+              <p className="micro-label micro-label--light">Enrollment</p>
+              <h2 id="enrollment-title">Consider the fit. Then take the next step.</h2>
             </div>
-            <div className="inline-links">
-              <a className="text-action" href="/about">
-                About Garden Gate
-              </a>
-              <a className="text-action" href="/about/people">
-                Meet Our People
-              </a>
+            <div className="promo-band__action-copy">
+              <p>After exploring the programs and approach, review Garden Gate’s current enrollment process.</p>
+              <a className="button button--light" href="/enrollment">Begin Enrollment</a>
             </div>
           </div>
         </section>
 
-        <section className="news section-shell" aria-labelledby="news-title">
-          <div className="news-heading">
-            <p className="section-context">News &amp; Resources</p>
-            <h2 id="news-title">Dated records keep the evidence honest.</h2>
-            <p>
-              These saved first-party examples show recent project, material, relationship, and
-              outdoor-learning themes without presenting a dated record as an evergreen promise.
-            </p>
+        <section className="materials-section content-frame" aria-labelledby="materials-title">
+          <SectionHeading id="materials-title" title="Materials, Projects & Documentation" />
+          <p className="materials-intro">A small display of authentic Garden Gate process: not products, exhibitions, or finished work for sale.</p>
+          <div className="material-display">
+            {materials.map((material) => (
+              <figure className={`material-item ${material.className}`} key={material.name}>
+                <img src={material.image} alt={material.alt} />
+                <figcaption>{material.name}</figcaption>
+              </figure>
+            ))}
           </div>
+        </section>
+
+        <section className="place-news-section content-frame" aria-labelledby="place-news-title">
+          <SectionHeading id="place-news-title" title="Place, Trust & Current Records" action="View News & Resources" href="/news" />
+
+          <article className="place-feature">
+            <img
+              src="/images/asset-009-place.jpg"
+              alt="A small Garden Gate learning building and fenced outdoor area surrounded by mature trees."
+            />
+            <div className="place-feature__copy">
+              <p className="micro-label">Oak Bluffs, Massachusetts</p>
+              <h3>Located on the Featherstone Center for the Arts campus.</h3>
+              <p>Garden Gate was founded in 1999 and is a 501(c)(3) nonprofit. Its setting supports studio learning, outdoor inquiry, relationships, and connection to place.</p>
+              <div className="trust-line" aria-label="Supported Garden Gate trust facts">
+                <span><strong>1999</strong> Founded</span>
+                <span><strong>Nonprofit</strong> Tax-exempt organization</span>
+                <span><strong>Oak Bluffs</strong> Featherstone campus location</span>
+              </div>
+            </div>
+          </article>
+
+          <div className="news-heading-row">
+            <div>
+              <p className="micro-label">News &amp; Resources</p>
+              <h2 id="news-title">Dated records keep the evidence honest.</h2>
+            </div>
+            <p>These recent first-party examples show project work, relationships, and outdoor learning without presenting a dated record as an evergreen promise.</p>
+          </div>
+
           <div className="news-list">
             {newsItems.map((item) => (
-              <article className="news-row" key={item.datetime}>
+              <article className="news-item" key={item.datetime}>
                 <time dateTime={item.datetime}>{item.date}</time>
                 <h3>{item.title}</h3>
                 <p>{item.context}</p>
               </article>
             ))}
           </div>
-          <a className="text-action" href="/news">
-            View News &amp; Resources
-          </a>
+          <ArrowLink href="/news">View News & Resources</ArrowLink>
         </section>
 
-        <section className="enrollment section-shell" aria-labelledby="enrollment-title">
-          <div>
-            <p className="section-context section-context--light">Enrollment bridge</p>
-            <h2 id="enrollment-title">Consider the fit. Then take the next step.</h2>
-          </div>
-          <div className="enrollment-copy">
-            <p>
-              After exploring the programs and approach, review Garden Gate’s current enrollment
-              process. This prototype does not promise openings, acceptance, timing, or form
-              behavior.
-            </p>
-            <a className="button button--light" href="/enrollment">
-              Begin Enrollment
-            </a>
-          </div>
-        </section>
-
-        <section className="support section-shell" aria-labelledby="support-title">
-          <div className="support-copy">
-            <p className="section-context">Support Garden Gate</p>
-            <h2 id="support-title">Support the conditions that let learning unfold.</h2>
-            <p>
-              Contributed support can strengthen learning environments, arts and materials,
-              educator development, access and belonging work, and community connection.
-            </p>
-          </div>
-          <div className="support-actions">
-            <a className="button button--donate" href={DONATE_URL}>
-              Donate
-            </a>
-            <a className="text-action" href="/support">
-              Why Support Matters
-            </a>
+        <section className="support-band" aria-labelledby="support-title">
+          <div className="content-frame support-band__inner">
+            <div>
+              <p className="micro-label micro-label--light">Support Garden Gate</p>
+              <h2 id="support-title">Support the conditions that let learning unfold.</h2>
+              <p>Contributed support can strengthen learning environments, arts and materials, educator development, access and belonging work, and community connection.</p>
+            </div>
+            <div className="support-band__actions">
+              <a className="button button--light" href={DONATE_URL}>Donate</a>
+              <ArrowLink href="/support" light>Why Support Matters</ArrowLink>
+            </div>
           </div>
         </section>
       </main>
 
-      <footer className="site-footer">
-        <div className="footer-grid">
-          <div className="footer-identity">
-            <a className="wordmark-link wordmark-link--footer" href="/" aria-label="Garden Gate home">
-              <Wordmark />
-            </a>
-            <p>Nonprofit, Reggio-inspired early education in Oak Bluffs, Massachusetts.</p>
-          </div>
-
-          <nav className="footer-group" aria-labelledby="footer-explore">
-            <h2 id="footer-explore">Explore</h2>
-            <a href="/">Home</a>
-            <a href="/programs">Programs</a>
-            <a href="/approach">Our Approach</a>
-            <a href="/about">About Garden Gate</a>
-            <a href="/about/people">People</a>
-          </nav>
-
-          <nav className="footer-group" aria-labelledby="footer-families">
-            <h2 id="footer-families">Families</h2>
-            <a href="/enrollment">Enrollment</a>
-            <a href="/families">Current Families</a>
-            <a href="/news">News &amp; Resources</a>
-          </nav>
-
-          <nav className="footer-group" aria-labelledby="footer-connect">
-            <h2 id="footer-connect">Connect</h2>
-            <a href="/professional-development">Professional Development</a>
-            <a href="/employment">Employment</a>
-            <a href="/support">Support</a>
-            <a href="/contact">Contact</a>
-            <a href={DONATE_URL}>Donate</a>
-          </nav>
-
-          <nav className="footer-group" aria-labelledby="footer-policies">
-            <h2 id="footer-policies">Policies</h2>
-            <a href="/privacy">Privacy</a>
-            <a href="/accessibility">Accessibility</a>
-          </nav>
-
-          <div className="footer-contact">
-            <h2>Contact</h2>
-            <address>
-              <span>30 Featherstone Lane</span>
-              <span>Oak Bluffs, MA 02557</span>
-              <span>Mail: PO Box 2666, Vineyard Haven, MA 02568</span>
-            </address>
-            <a href="tel:+17745632435">(774) 563-2435</a>
-            <a href="mailto:gardengatecdc@hotmail.com">gardengatecdc@hotmail.com</a>
-            <div className="footer-social">
-              <a href="https://www.facebook.com/GardenGateCDC/">Facebook</a>
-              <a href="https://www.instagram.com/gardengatecdc/">Instagram</a>
-            </div>
-          </div>
-        </div>
-        <div className="footer-bottom">
-          <span>Garden Gate Child Development Center</span>
-          <span>Unapproved Stage 7 comparison prototype</span>
-        </div>
-      </footer>
+      <Footer />
     </>
   )
 }
-
-export default App

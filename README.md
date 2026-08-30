@@ -1,21 +1,21 @@
-# STAGE 7 - CARLE TEST
+# Garden Gate — Stage 7 Carle Template V2
 
-Complete, responsive homepage-only design exploration for Garden Gate Child Development Center.
+Unapproved homepage comparison prototype built directly in:
 
-This is an **unapproved Stage 7 comparison test**. It is not the selected homepage, a final design system, final copy, a production website, or a launch-ready implementation.
+`/Users/anthonyrosenberger/Desktop/GardenGate-Carle-Test/`
 
 ## Run locally
 
-```sh
+```bash
 npm install
-npm run dev -- --port 4173
+npm run dev
 ```
 
-Open `http://localhost:4173/`.
+Open the local URL printed by Vite.
 
-Production checks:
+## Verification
 
-```sh
+```bash
 npm run verify
 npm run build
 npm run preview -- --host 127.0.0.1 --port 4173
@@ -23,16 +23,16 @@ npm run preview -- --host 127.0.0.1 --port 4173
 
 ## Scope
 
-- Destination: `/Users/anthonyrosenberger/Desktop/GardenGate-Carle-Test/`
-- Assigned visual reference: `/Users/anthonyrosenberger/Desktop/GardenGate/06-design-research/screenshots/05-carle-museum-desktop.png`
-- Homepage only; deeper routes are preserved as exact link destinations but are not built.
-- No CMS, forms, donation processing, analytics, authentication, deployment, or active Portuguese route.
-- Donate links hand off directly to `https://www.gardengatemv.org/donate`.
+- One responsive homepage only; internal destination pages are not built.
+- React + Vite with ordinary CSS and no component kit.
+- High-fidelity structural adaptation of The Eric Carle Museum homepage template using only Garden Gate content, routes, palette, and locally stored photographs.
+- Reference: `/Users/anthonyrosenberger/Desktop/GardenGate/06-design-research/screenshots/05-carle-museum-desktop.png`
+- Live responsive reference inspected August 30, 2026: `https://carlemuseum.org/`
+- No Carle logo, caterpillar, copy, illustration, artwork, photograph, book imagery, icon, product, exhibition, event, or proprietary asset is included.
+- This is an unapproved Stage 7 comparison test, not a selected homepage, production design system, or production-ready website.
 
-## Design and asset status
+## Rights and approval limits
 
-The prototype translates the reference's editorial pacing, varied image scale, adjacent caption/date treatment, and compact information hierarchy into an original Garden Gate system called **Studio Margin Notes**. It does not use reference-site text, artwork, identity, assets, layout order, or interaction signatures.
+The selected Garden Gate photographs are copied from the Stage 2 evidence inventory for this prototype. Current child/guardian consent, photographer permission, caption identity, publication context, and final crop approval remain required. ASSET-254 includes a photographic reference within the image. ASSET-165 includes a visible third-party can mark that the prototype crop seeks to exclude; both need specific publication review. ASSET-003, 005, 006, 007, and 009 have limited source resolution.
 
-Seven Garden Gate image files were copied from the read-only source collection into `public/images/`. The project record clears the locally retained official-site photographs for this prototype, but final publication still needs current child/photographer permissions, image identities and dates, crop approval, and context review. ASSET-254 contains a visible photographic reference that needs separate source-image review. ASSET-005, ASSET-006, and ASSET-007 are small source files and need approved higher-resolution masters for final publication.
-
-Fraunces and Public Sans are open-source Google Fonts used for this exploration with documented Georgia/Times and Arial/Helvetica fallbacks. A final build should confirm license-file retention, privacy policy, and whether to self-host approved font files.
+IBM Plex Sans and Newsreader are loaded from Google Fonts with Arial/Helvetica and Georgia/Times fallbacks. Production use still requires a font-hosting, privacy, availability, and licensing decision.
